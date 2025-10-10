@@ -1,0 +1,83 @@
+/*) Create a class Sphere, to calculate the volume and surface area of sphere. 
+(Hint : Surface area=4*3.14(r*r), Volume=(4/3)3.14(r*r*r))*/ 
+import java.util.Scanner; 
+class Sphere  
+{ 
+    private double radius; 
+    public Sphere(double radius)  
+ { 
+        this.radius = radius; 
+    } 
+    public double getSurfaceArea()  
+ { 
+        return 4 * 3.14 * (radius * radius); 
+    } 
+    public double getVolume()  
+ { 
+        return (4.0 / 3.0) * 3.14 * (radius * radius * radius); 
+    } 
+} 
+public class Slip8Question1  
+{ 
+    public static void main(String[] args)  
+ { 
+        Scanner sc = new Scanner(System.in);  
+        System.out.print("Enter radius of the sphere: "); 
+        double r = sc.nextDouble(); 
+        Sphere s = new Sphere(r); 
+        System.out.println("Surface Area of Sphere: " + s.getSurfaceArea()); 
+        System.out.println("Volume of Sphere: " + s.getVolume()); 
+        sc.close(); 
+    } 
+} 
+
+
+/*Design a screen to handle the Mouse Events such as MOUSE_MOVED and MOUSE_CLICKED and 
+display the position of the Mouse_Click in a TextField.*/ 
+
+import java.awt.*; 
+import java.awt.event.*; 
+public class Slip8Question2 extends Frame implements MouseListener, MouseMotionListener  
+{ 
+    TextField tf; 
+    Slip8Question2()  
+ { 
+        setLayout(new FlowLayout()); 
+        tf = new TextField(30); 
+        add(tf); 
+        addMouseListener(this); 
+        addMouseMotionListener(this); 
+        setSize(400, 300); 
+        setTitle("Mouse Event Demo"); 
+        setVisible(true); 
+        addWindowListener(new WindowAdapter()  
+ { 
+            public void windowClosing(WindowEvent we)  
+ { 
+                System.exit(0); 
+            } 
+        }); 
+    } 
+    public void mouseClicked(MouseEvent e)  
+{ 
+        tf.setText("Mouse Clicked at (" + e.getX() + ", " + e.getY() + ")"); 
+     } 
+    public void mousePressed(MouseEvent e)  
+ {} 
+    public void mouseReleased(MouseEvent e)  
+ {} 
+    public void mouseEntered(MouseEvent e)  
+ {} 
+    public void mouseExited(MouseEvent e)  
+ {} 
+    public void mouseMoved(MouseEvent e)  
+ { 
+        setTitle("Mouse Moved at (" + e.getX() + ", " + e.getY() + ")"); 
+     } 
+    public void mouseDragged(MouseEvent e)  
+ {} 
+    public static void main(String[] args)  
+ { 
+        new Slip8Question2(); 
+    } 
+} 

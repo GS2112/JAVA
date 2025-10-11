@@ -1,0 +1,125 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct job
+{
+int atime;
+int btime;
+int ft;
+int tat;
+int wt;
+}p[10];
+int arr[10],burst[10],rq[10],no_rq=0,time=0,n;
+
+void addrq();
+int selectjob();
+void delq(int j);
+int finishall();
+void main()
+{
+int i,j;
+printf("Enter number of jobs : ");
+scanf("%d",&n);
+printf("\n");
+for(i=0;i<n;i++)
+{
+printf("Enter arrival time of p%d : ",i);
+scanf("%d",&p[i].atime);
+arr[i]=p[i].atime;
+}
+printf("\n");
+for(i=0;i<n;i++)
+{
+printf("\nArrival time of p%d : ",i);
+printf("%d",p[i].atime);
+arr[i]=p[i].atime;
+}
+printf("\n");
+for(i=0;i<n;i++)
+{
+printf("Enter burst time of p%d : ",i);scanf("%d",&p[i].btime);
+burst[i]=p[i].btime;
+}
+printf("\n");
+for(i=0;i<n;i++)
+{
+printf("\nBurst time of p%d : ",i);
+printf("%d",p[i].btime);
+burst[i]=p[i].btime;
+}
+printf("\n");
+addrq();
+while(1)
+{
+j=selectjob();
+if(j==-1)
+{
+printf("CPU is Idle");
+time++;
+addrq();
+}
+else
+{
+while(burst[j]!=0)
+{
+printf("\tj%d",j);
+burst[j]--;
+time++;
+addrq();
+}
+p[j].ft=time;
+}
+if(finishall()==1)
+break;
+}
+int Ttat=0,Twt=0;
+printf("\n\n Job\t Finish time\t TAT\t WT");
+for(i=0;i<n;i++){
+p[i].tat=p[i].ft-p[i].atime;
+p[i].wt=p[i].tat-p[i].btime;
+printf("\n job%d \t %d\t \t%d\t %d\t",i,p[i].ft,p[i].tat,p[i].wt);
+Ttat=Ttat+p[i].tat;
+Twt=Twt+p[i].wt;
+}
+float avgtat=Ttat/n;
+float avgwt=Twt/n;
+printf("\n\nAverage Turn Around Time = %f",avgtat);
+printf("\nAverage Waiting Time = %f",avgwt);
+}
+void addrq()
+{
+int i;
+for(i=0;i<n;i++)
+if(arr[i]==time)
+{
+rq[no_rq]=i;
+no_rq++;
+}
+}
+int selectjob()
+{
+int i,j;
+if(no_rq==0)
+return -1;
+j=rq[0];
+delq(j);
+return j;
+}
+void delq(int j)
+{
+int i;
+for(i=0;i<no_rq;i++)
+if(rq[i]==j)
+break;
+for(i=i+1;i<no_rq;i++)
+rq[i-1]=rq[i];
+no_rq--;
+}
+int finishall()
+{
+int i;
+for(i=0;i<n;i++)
+if(burst[i]!=0)
+return -1;
+return 1;
+}
+

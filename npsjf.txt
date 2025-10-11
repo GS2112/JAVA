@@ -20,36 +20,36 @@ printf("\n");
 for(i = 0;i<n;i++)
 {
 printf("Enter the arrival time p%d:",i);
-scanf("%d",&p[i].atime); //Assigning the arrival time.
+scanf("%d",&p[i].atime); 
 arr[i] = p[i].atime;
 }
 printf("\n");
 for(i = 0;i<n;i++)
 {
 printf("Enter the arrival time p%d:",i);
-printf("%d\n",p[i].atime); //Printing the arrival time.
+printf("%d\n",p[i].atime); 
 arr[i] = p[i].atime;
 }
 printf("\n");
 for(i = 0;i<n;i++)
 {
 printf("Enter the burst time p%d:",i);
-scanf("%d",&p[i].btime); //Assigning the burst time.
+scanf("%d",&p[i].btime); 
 burst[i] = p[i].btime;
 }
 printf("\n");
 for(i = 0;i<n;i++)
 {
 printf("Enter the burst time p%d:",i);
-printf("%d\n",p[i].btime); //Printing the burst time.
+printf("%d\n",p[i].btime); 
 burst[i] = p[i].btime;
 }
 printf("\n");
-addrq(); //Adding the process.// Process start now.
+addrq();
 printf("Gantt Chart is:");
 while(1)
 {
-j = selectionjob(); //search the process now.
+j = selectionjob();
 if(j == -1)
 {
 printf("CPU is ideal");

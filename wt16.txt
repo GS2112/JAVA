@@ -1,0 +1,116 @@
+1) Write a PHP script for the following: Design a form to accept the marks of 5 different 
+subjects of a student, having serial number, subject name & marks out of 100. Display the 
+result in the tabular format which will have total, percentage and grade. Use only 3 text 
+boxes. (Use array of form parameters). 
+// HTML Program 
+
+<html> 
+<head> 
+<style> 
+table 
+{ 
+border-collapse: collapse; 
+} 
+table, th, td 
+{ 
+border: 1px solid blue; 
+} 
+</style> 
+</head> 
+<body> 
+<form method="post" action="string4stud.php"> 
+<center> 
+<h1>Enter details of 5 Students  </h1> 
+<h3>Enter Serial Number <input type="text" name="snum" placeholder="ex 11,12,13,14,15" 
+/></h3> 
+<h3>Enter Subject Name <input type="text" name="sname" /></h3> 
+<h3>Enter Marks <input type="text" name="smarks" /></h3> 
+<input type="submit" value="Submit"/> 
+<input type="reset" name="Reset"> 
+</center> 
+</form> 
+</body> 
+</html> 
+// PHP Program 
+<?php 
+$sno = $_POST['snum']; 
+$sname = $_POST['sname']; 
+$marks = $_POST['smarks']; 
+$sno = explode(',',$sno); 
+$subname = explode(',',$sname); 
+$smarks = explode(',',$marks); 
+$total = (($smarks[0]+$smarks[1]+$smarks[2]+$smarks[3]+$smarks[4])); 
+$per=$total/5; 
+if($per>=70) 
+$grade="A"; 
+elseif($per>=60) 
+$grade="B"; 
+elseif($per>=50) 
+$grade="C"; 
+elseif ($per>=40) 
+$grade="D"; 
+else 
+$grade="F"; 
+echo "<table align=center border=1>"; 
+echo "<tr> 
+<th> <b> Serial Number </b> </th> 
+<th> <b> Subject Name  </b> </th> 
+<th> <b> Marks        
+</tr>"; 
+</b> </th> 
+for($i=0;$i<5;$i++) 
+echo "<tr> 
+<td>".$sno[$i]."</td> 
+<td>".$subname[$i]."</td> 
+<td>".$smarks[$i]."</td> 
+</tr>"; 
+echo "<tr>  <th colspan=2> Total Marks </th><td>".$total."</td> </tr>"; 
+echo "<tr>  <th colspan=2> Percentage:- </th> <td>" .$per. "</td>  </tr>"; 
+echo "<tr>  <th colspan=2> Grade:- </th> <td>" .$grade. "</td>  </tr>"; 
+echo "</table>"; 
+?>
+
+
+
+Q2) A) # Write a python program to create two lists, one representing subject names␣
+ ↪and the other
+ # representing marks obtained in those subjects. Display the data in a pie␣
+ ↪chart and bar chart
+ # (similer program as slip 9 of 2)
+ import matplotlib.pyplot as plt
+ import numpy as np
+ subjects = ['Math', 'Science', 'English', 'History', 'Geography']
+ marks = [85, 90, 75, 80, 95]
+ fig = plt.figure(figsize=(5, 5))
+ plt.pie(marks,labels=subjects)
+ plt.show()
+ plt.subplot(1, 1, 1)
+ plt.bar(subjects, marks, color='skyblue')
+ plt.xlabel('Subjects')
+ plt.ylabel('Marks Obtained')
+ plt.title('Marks in Subjects')
+ plt.show()
+
+Q2) B) # Write a python program to create a data frame for students’ information such␣
+ ↪as name,
+ # graduation percentage and age. Display average age of students, average of␣
+ ↪graduation
+ # percentage
+
+ import pandas as pd
+ data = {
+ 'Name': ['Alice', 'Bob', 'Charlie', 'David', 'Eva'],
+ 'Graduation Percentage': [85.5, 78.0, 92.5, 88.0, 80.0],
+ 'Age': [21, 22, 20, 23, 21]
+ }
+ # Create a DataFrame from the dictionary
+ df = pd.DataFrame(data)
+ # Calculate the average age of students
+ average_age = df['Age'].mean()
+ 3
+# Calculate the average graduation percentage
+ average_graduation_percentage = df['Graduation Percentage'].mean()
+ print("Student Information:")
+ print(df)
+ print(f"\nAverage Age of Students: {average_age:.2f}")
+ print(f"Average Graduation Percentage: {average_graduation_percentage:.2f}")

@@ -1,0 +1,63 @@
+Q.1) Write the HTML code for generating the form as shown below. Apply the internal CSS to 
+following form to change the font size of the heading to 6pt and change the color to red and also 
+change the background color to yellow. 
+ 
+<!DOCTYPE html> 
+<html>  
+<head>  
+     <title>Project Management</title>  
+     <style> 
+     h1{font-size:6px;color:red;text-decoration: underline;text-align:center;} 
+     form{background-color:yellow;height: 300px;width: 330px;position: absolute;top: 10% ;left: 
+20%;} 
+    </style> 
+</head>  
+<body>  
+    <h1>Project Management</h1>   
+    <form> 
+       Project Name<input type="text" name="project name"><br><br> 
+       Assigned to<select name="person">  
+                    <option value="abc">abc</option>  
+                    <option value="xyz">xyz</option>  
+                    <option value="efg">efg</option>  
+                </select> <br><br> 
+        Start Date<input type="date" name="Start Date"><br><br> 
+        End Date<input type="date" name="End date"><br><br> 
+        Priority<input type="radio" name="priority" id="high" value="High"> High  
+                <input type="radio" name="priority" id="average" value="Average"> Average  
+                <input type="radio" name="priority" id="low" value="Low"> Low <br> 
+        Description<textarea name="description" ></textarea><br><br> 
+                 
+            </form> 
+   </body>  
+</html>  
+
+
+
+
+
+
+
+ 
+ 
+Q.2 A) Write a Python program to create a Pie plot to get the frequency of the three species of the  
+Iris data (Use iris.csv)   
+import pandas as pd  
+import matplotlib.pyplot as plt  
+iris = pd.read_csv("iris.csv")  
+ax=plt.subplots(1,1,figsize=(10,8))  
+iris['Species'].value_counts().plot.pie(explode=[0.1,0.1,0.1],autopct='%1.1f%%',shadow=True,figsize
+ = 
+(10,8))  
+plt.title("Iris Species %")  
+plt.show()  
+
+
+
+
+Q.2) 
+B) Write a Python program to view basic statistical details of the data.(Use wineequality-red.csv) 
+import pandas as pd 
+df=pd.read_csv('wineequality-red.csv') 
+print(df) 
+print(df.describe())

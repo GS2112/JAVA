@@ -1,0 +1,73 @@
+Q.1) Write a script to accept two integers(Use html form having 2 textboxes). 
+Write a PHP script to, 
+a. Find mod of the two numbers. 
+b. Find the power of first number raised to the second. 
+c. Find the sum of first n numbers (considering first number as n) 
+d. Find the factorial of second number. 
+(Write separate function for each of the above operations.) 
+
+
+<!DOCTYPE html> 
+<html> 
+<body> 
+<form method="POST" action="script.php"> 
+        Enter a first number: <input type="text" name="num1" required><br><br> 
+ Enter a second number: <input type="text" name="num2" required><br><br> 
+        <br><br> 
+        <input type="submit" value="Submit"> 
+</form> 
+</body> 
+</html> 
+ ----------------script.php 
+ 
+<?php 
+$integer1 = $_POST['num1']; 
+$integer2 = $_POST['num2']; 
+ 
+//question 1. 
+echo "mod of given number is=".$integer1%$integer2; 
+ 
+//question 2. 
+echo "<br>power of gievn number is=".pow($integer1,$integer2); 
+ 
+ //question 3. 
+ $sum=0; 
+ for($i=1;$i<=$integer1;$i++) 
+ { 
+ $sum=$sum+$i; 
+ } 
+ echo "<br>sum of given first number is$sum"; 
+ 
+ //question 4. 
+ $fact=1; 
+ for($i=1;$i<=$integer2;$i++) 
+ { 
+ $fact=$fact*$i; 
+ } 
+ echo "<br>factirial of given second number is$fact"; 
+
+
+
+Q2) A)
+# Write a python program to Display column-wise mean, and median for the
+# SOCR HeightWeight dataset.
+import pandas as pd
+df = pd.read_csv('hw3.csv')
+print("mean is \n",df.mean())
+print("median is \n",df.median())
+
+
+
+
+Q2) B)# Write a python program to compute sum of Manhattan distance between all pairs␣
+↪of
+# points.
+points = [(1, 2), (3, 4), (5, 6)]
+total_distance = 0
+for i in range(len(points)):
+for j in range(i + 1, len(points)):
+total_distance += abs(points[i][0] - points[j][0]) + abs(points[i][1] -␣
+↪points[j][1])
+print("Sum of Manhattan distances:", total_distance)
+ 
+?> 

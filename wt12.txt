@@ -1,0 +1,125 @@
+Q1) Write a PHP script for the following: Design a form to accept two numbers from the user. 
+Give options to choose the arithmetic operation (use radio buttons). Display the result on the 
+next form. (Use the concept of function and default parameters. Use „include‟ construct or 
+require statement) 
+// HTML Program  
+
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title> Arithmetic Calculator</title> 
+</head> 
+<body> 
+<h2>Arithmetic Calculator</h2> 
+<form action="function2.php" method="post"> 
+Enter first number: <input type="number" name="num1" ><br><br> 
+Enter second number: <input type="number" name="num2"><br><br> 
+Select operation: 
+<input type="radio" name="operation" value="add" checked> Addition 
+<input type="radio" name="operation" value="subtract"> Subtraction 
+<input type="radio" name="operation" value="multiply"> Multiplication 
+<input type="radio" name="operation" value="divide"> Division<br><br> 
+<input type="submit" value="Calculate"> 
+</form> 
+</body> 
+</html> 
+// PHP Program  
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>Arithmetic Calculator - Result</title> 
+</head> 
+<body> 
+<h2>Arithmetic Calculator - Result</h2> 
+<?php  
+include 'myfunctions2.php'; 
+$num1 = $_POST['num1']; 
+$num2 = $_POST['num2']; 
+$operation = $_POST['operation']; 
+switch($operation) 
+{ 
+case "add": 
+$add=sum($num1,$num2); 
+echo "$add"; 
+break; 
+case "subtract": 
+$sub=sub($num1,$num2); 
+echo "$sub"; 
+break; 
+case "multiply": 
+$mul=mul($num1,$num2); 
+echo "$mul"; 
+break; 
+case "divide": 
+$div=div($num1,$num2); 
+echo "$div";  
+break;     
+default: 
+return "Invalid operation selected."; 
+} 
+?> 
+</body> 
+</html> 
+//  'myfunctions2.php ‘ 
+<?php 
+function sum($num1=10,$num2=10) 
+{ 
+$add=$num1+$num2; 
+return $add; 
+} 
+function sub($num1=10,$num2=20) 
+{ 
+$sub=$num1-$num2; 
+return $sub; 
+} 
+function mul($num1=10,$num2=20) 
+{ 
+$mul=$num1*$num2; 
+return $mul; 
+} 
+function div($num1=10,$num2=20) 
+{ 
+$div=$num1/$num2; 
+return $div; 
+} 
+?>
+
+
+
+Q2) A) # Generate a random array of 50 integers and display them using a line chart,␣
+ ↪scatter plot,
+ # histogram and box plot. Apply appropriate color, labels and styling options.
+ # (this program is same as slip4 of 1 same code)
+ import matplotlib.pyplot as plt
+ import numpy as np
+ x=np.random.randn(50)
+ y=np.random.randn(50)
+ plt.plot(x,y)
+ plt.show()
+ plt.scatter(x,y)
+ plt.show()
+ plt.hist(x)
+ plt.show()
+ plt.boxplot(y,vert=False)
+ plt.show()
+
+
+
+Q2) B) # Write a Python program to create data frame containing column name, salary,
+ # department add 10 rows with some missing and duplicate values to the data␣
+ ↪frame. Also drop all
+ # null and empty values. Print the modified data frame
+ import pandas as pd
+ import numpy as np
+ # Create a DataFrame with some missing and duplicate values
+ df = pd.DataFrame(data)
+ data = {
+ 'Name': ['Alice', 'Bob', 'Charlie', 'David', 'Eve', 'Frank', 'Grace',␣
+ ↪'Alice', None, 'Hannah'],
+ 'Salary': [70000, 80000, None, 60000, 90000, 75000, None, 80000, 95000,␣
+ ↪50000],
+ 'Department': ['HR', 'IT', 'Finance', None, 'Marketing', 'IT', 'HR', 'IT',␣
+ ↪'Finance', None]
+ }
+ # Display the original DataFrame
+ print("Original DataFrame:")

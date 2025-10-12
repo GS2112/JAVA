@@ -1,0 +1,70 @@
+Q.1)Write a HTML code, which generate the following output 
+
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <style> 
+table, th, td { 
+  border: 1px solid black; 
+  border-collapse: collapse; 
+} 
+</style> 
+</head> 
+<body> 
+<table> 
+  <tr> 
+    <th colspan=4>List of Books</th> 
+  </tr> 
+  <tr> 
+    <th rowspan="2">Item No</th> 
+    <th rowspan="2">Item Name</th> 
+    <th colspan=2>price</th> 
+  </tr> 
+  <tr> 
+    <th>Rs</th> 
+    <th>paise</th> 
+  </tr> 
+   <tr> 
+     <td>1</td> 
+     <td>PROGRAMMING IN PYTHON</td> 
+     <td>500</td> 
+     <td>50</td> 
+  </tr> 
+   <tr> 
+     <td>2</td> 
+     <td>PROGRAMMING IN JAVA</td> 
+     <td>345</td> 
+     <td>00</td> 
+  </tr> 
+</table> 
+</body> 
+</html> 
+
+
+
+
+Q.2 A) Generate a random array of 50 integers and display them using a line chart, scatter  
+plot, histogram and box plot. Apply appropriate color, labels and styling options. 
+
+import numpy as np 
+import matplotlib.pyplot as plt 
+# Generate a random array of 50 integers 
+random_data = np.random.randint(1, 100, size=50) 
+print(random_data) 
+# Line chart 
+plt.plot(random_data, color='blue') 
+plt.title('Line Chart') 
+plt.show() 
+plt.scatter(range(50), random_data, color='green') 
+plt.title('Scatter Plot') 
+plt.show() 
+plt.hist(random_data, bins=10, color='orange', edgecolor='black') 
+plt.title('Histogram') 
+plt.show() 
+plt.boxplot(random_data, vert=False, patch_artist=True, boxprops=dict(facecolor='red')) 
+plt.title('Box Plot') 
+plt.show() 
+# Adjust layout 
+#plt.tight_layout() 
+# Show the plots 
+#plt.show()

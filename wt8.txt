@@ -1,0 +1,68 @@
+Q.1) Design an HTML form to accept two strings from the user. Write a PHP script for the 
+following. 
+a. Find whether the small string appears at the start of the large string. 
+b. Find the position of the small string in the big string. 
+c. Compare both the string for first n characters, also the comparison should not be case 
+sensitive. 
+<!DOCTYPE html> 
+<html> 
+<body> 
+<form method="POST" action="script.php"> 
+Small String: 
+<input type="text" name="smallString" id="smallString" required> 
+  Big String: 
+  <input type="text" name="bigString" id="bigString" required> 
+   
+  <input type="submit" value="Submit"> 
+</form> 
+</body> 
+</html> 
+ ----------------script.php 
+<?php 
+if ($_SERVER["REQUEST_METHOD"] == "POST")  
+{ 
+  $smallString = $_POST["smallString"]; 
+  $bigString = $_POST["bigString"]; 
+//question 2. 
+  $position = strpos($bigString, $smallString); 
+  echo "position of small string in big string-".$position."<br>"; 
+ 
+//question 3. 
+  $comparison = strncasecmp($bigString, $smallString,8); 
+  if($comparison==0) 
+  { 
+  echo "string are equal"; 
+  } 
+  else 
+  { 
+  echo "string are not equal"; 
+  } 
+ 
+//question 1. 
+  $pos = strpos($bigString, $smallString,0); 
+  if($pos==0) 
+  { 
+  echo "<br>small string found at start of large string"; 
+  } 
+  else 
+  { 
+  echo "<br>small string not found at start of large string"; 
+  } 
+} 
+?>
+
+
+
+Q2)# Write a program in python to perform following task : [15] Standardizing Data␣
+↪(transform
+# them into a standard Gaussian distribution with a mean of 0 and a standard␣
+↪deviation of 1) (Use
+# winequality-red.csv)
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+df = pd.read_csv('winequality-red.csv')
+num_cols = df.select_dtypes(include=['float64', 'int64']).columns
+scaler = StandardScaler()
+std_data = scaler.fit_transform(df[num_cols])
+std_df = pd.DataFrame(std_data, columns=num_cols)
+print(std_df.head())

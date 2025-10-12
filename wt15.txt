@@ -1,0 +1,62 @@
+Q.1) Design a form to accept string from the user and perform the following operations  
+a.  To select first 5 words from the string  
+b.  Convert the given string to lowercase and then to Title case.  
+c.  Pad the given string with “*” from left and right both the sides.   
+d.  Remove the leading whitespaces from the given string.   
+e.  Find the reverse of given string. 
+
+<!DOCTYPE html> 
+<html> 
+<body> 
+<form method="POST" action="script.php"> 
+Enter a string: <input type="text" name="input_string" required><br><br> 
+<input type="submit" value="Submit"> 
+</form> 
+</body> 
+</html> ----------------script.php 
+<?php 
+if ($_SERVER["REQUEST_METHOD"] == "POST")  
+{ 
+$input = $_POST["input_string"]; 
+$ans1=substr($input,0,5); 
+echo "$ans1<br>"; 
+$ans2=strtolower($input); 
+echo "$ans2<br>"; 
+$titlecase = ucwords($input); 
+echo "$titlecase <br>"; 
+$ans3=str_pad($input,30,'*'); 
+echo "$ans3<br>"; 
+$ans4 = ltrim($input); 
+echo "$ans4<br>"; 
+$ans5=strrev($input); 
+echo "$ans5<br>"; 
+} 
+?> 
+
+
+
+Q.2 A) Generate a random array of 50 integers and display them using a line chart, scatter  
+plot, histogram and box plot. Apply appropriate color, labels and styling options. 
+
+import numpy as np 
+import matplotlib.pyplot as plt 
+# Generate a random array of 50 integers 
+random_data = np.random.randint(1, 100, size=50) 
+print(random_data) 
+# Line chart 
+plt.plot(random_data, color='blue') 
+plt.title('Line Chart') 
+plt.show() 
+plt.scatter(range(50), random_data, color='green') 
+plt.title('Scatter Plot') 
+plt.show() 
+plt.hist(random_data, bins=10, color='orange', edgecolor='black') 
+plt.title('Histogram') 
+plt.show() 
+plt.boxplot(random_data, vert=False, patch_artist=True, boxprops=dict(facecolor='red')) 
+plt.title('Box Plot') 
+plt.show() 
+# Adjust layout 
+#plt.tight_layout() 
+# Show the plots 
+#plt.show()

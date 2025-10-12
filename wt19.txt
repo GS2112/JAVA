@@ -1,0 +1,51 @@
+Q.1).Write a PHP script to accept 2 strings from the user, the first string should be a sentence and 
+second can be a word. 
+a. Delete a small part from first string after accepting position and number of characters to 
+remove. 
+b. Insert the given small string in the given big string at specified position without removing 
+any characters from the big string. 
+c. Replace some characters/ words from given big string with the given small string at 
+specified position. 
+
+<?php 
+$input="i am PHP developer"; 
+$word="was "; 
+$ans1=substr($input,2); 
+echo "$ans1<br>"; 
+$ans2=substr_replace($input,$word,5,0); 
+echo "$ans2<br>"; 
+$ans3=substr_replace($input,$word,2,3); 
+echo "$ans3<br>"; 
+?> 
+
+
+Q.2) Write a Python program           
+1. To create a dataframe containing columns name, age and percentage. Add 10 rows to the  
+dataframe. View the dataframe. 
+import pandas as pd 
+df=pd.DataFrame(columns=['name','age','percent']) 
+df.loc[0]=['abc',20,50.6] 
+df.loc[1]=['xyz',21,60] 
+print(df) 
+
+import pandas as pd 
+df=pd.DataFrame(columns=['name','age','percent']) 
+df.loc[0]=['abc',20,50.6] 
+df.loc[1]=['xyz',21,60] 
+print(df) 
+print(df.shape) 
+print(df.describe()) 
+print(df.info()) 
+print(df.dtypes) 
+
+3. To Add 5 rows with duplicate values and missing values. Add a column ‘remarks’ with empty  
+values. Display the data.  
+import pandas as pd 
+df=pd.DataFrame(columns=['name','age','percent']) 
+df.loc[0]=['abc',20,50.6] 
+df.loc[1]=['xyz',21,60] 
+df.loc[2]=[None,None,None] 
+df.loc[3]=['pqr',None,67] 
+df.loc[4]=['lmn',23,None] 
+df['roll no']=None 
+print(df) 

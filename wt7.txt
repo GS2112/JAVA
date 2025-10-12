@@ -1,0 +1,52 @@
+Q.1) Design HTML 5 Page Using CSS Which Displays the following Navigation Bar 
+<!DOCTYPE html> 
+<html> 
+<head> 
+<style> 
+ul { 
+list-style-type: none; 
+overflow: hidden; 
+background-color:  #f1f1f1; 
+} 
+li { 
+float: left; 
+} 
+a { 
+display: block; 
+color: blue; 
+padding: 14px 16px; 
+text-decoration: none; 
+} 
+a:hover { 
+background-color: #555; 
+color: white; 
+} 
+</style> 
+</head> 
+<body> 
+<ul> 
+<li><a href="#home">Home</a></li> 
+<li><a href="#JAVA">Java</a></li> 
+<li><a href="#HTML">HTML</a></li> 
+<li><a href="#CSS">CSS</a></li> 
+</ul> 
+</body> 
+</html>
+
+
+
+
+Q2)[3]: # Write a Python program to perform the following tasks :
+# a. Apply OneHot coding on Country column.
+# b. Apply Label encoding on purchased column
+# (Data.csv have two categorical column the country column, and the purchased␣
+↪column).
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder
+d = pd.read_csv('s7.csv')
+# Apply Label encoding on the 'Purchased' column
+le = LabelEncoder()
+d['Purchased'] = le.fit_transform(d['Purchased'])
+# Apply OneHot encoding on the 'Country' column
+ohed = pd.get_dummies(d, columns=['Country'])
+print(ohed)

@@ -1,0 +1,115 @@
+Q.1) Write a PHP script for the following: Design a form having a text box and a drop down list 
+containing any 3 separators(e.g. #, |, %, @, ! or comma) accept a strings from the user and also a 
+separator. 
+a. Split the string into separate words using the given separator. 
+b. Replace all the occurrences of separator in the given string with some other separator. 
+c. Find the last word in the given string. 
+ 
+ 
+<!DOCTYPE html> 
+<html> 
+<body> 
+<form method="post" action="script.php"> 
+        Enter String:<input type="text" id="inputString" name="input_String" required><br><br> 
+ 
+        Select Separator: 
+        <select name="separator"> 
+            <option value="#">#</option> 
+            <option value="|">|</option> 
+            <option value="%">%</option> 
+            <option value="@">@</option> 
+            <option value="!">!</option> 
+            <option value=",">Comma</option> 
+        </select><br><br> 
+ 
+        <input type="submit" value="submit"> 
+</form> 
+</body> 
+</html> 
+ ----------------script.php------------ 
+ 
+<?php 
+if ($_SERVER["REQUEST_METHOD"] == "POST")  
+{ 
+$input_string = $_POST["input_string"]; 
+$separator =$_POST["separator"]; 
+ 
+//$ans=explode(" ",$input_string); 
+//print_r($ans); 
+//$ans1=implode($separator,$ans); 
+//echo $ans1; 
+//question 1. 
+echo"replace input string with separator"; 
+ $ans1=str_replace(" ",$separator, $input_string); 
+echo "<br>$ans1"; 
+ 
+//question 2. 
+echo "<br>after replacing old seaparator by new separator"; 
+ $new_separator = "%";  
+ $ans2=str_replace(" ", $new_separator, $input_string); 
+ echo "<br>$ans2"; 
+ 
+ //question 3. 
+echo "<br>last word in given string is"; 
+$ans3=strrchr($input_string," "); 
+echo "<br>$ans3"; 
+} 
+?> 
+
+
+
+Q.2 A) Generate a random array of 50 integers and display them using a line chart, scatter  
+plot, histogram and box plot. Apply appropriate color, labels and styling options.  
+
+
+import numpy as np 
+import matplotlib.pyplot as plt 
+# Generate a random array of 50 integers 
+random_data = np.random.randint(1, 100, size=50) 
+print(random_data) 
+# Line chart 
+plt.plot(random_data, color='blue') 
+plt.title('Line Chart') 
+plt.show() 
+plt.scatter(range(50), random_data, color='green') 
+plt.title('Scatter Plot') 
+plt.show() 
+plt.hist(random_data, bins=10, color='orange', edgecolor='black') 
+plt.title('Histogram') 
+plt.show() 
+plt.boxplot(random_data, vert=False, patch_artist=True, boxprops=dict(facecolor='red')) 
+plt.title('Box Plot') 
+plt.show() 
+# Adjust layout 
+#plt.tight_layout() 
+# Show the plots 
+#plt.show()
+
+
+Q2) B)
+# Create two lists, one representing subject names and the other representing␣
+↪marks
+# obtained in those subjects. Display the data in a pie chart
+import matplotlib.pyplot as plt
+import numpy as np
+subjects = ['Math', 'Science', 'English', 'History', 'Geography']
+marks = [85, 90, 75, 80, 95]
+fig = plt.figure(figsize=(5, 5))
+plt.pie(marks,labels=subjects)
+plt.show()
+
+Q2) c)
+# Write a program in python to perform following task (Use winequality-red.csv␣
+↪) Import
+# Dataset and do the followings: a) Describing the dataset b) Shape of the␣
+↪dataset c) Display first
+# 3 rows from dataset
+3
+# (similer slip4 of 2)
+import pandas as pd
+df = pd.read_csv('Data_filled.csv')
+print("Dataset Description:")
+print(df.describe())
+print("\nShape of the dataset:", df.shape)
+print("\nFirst 3 rows of the dataset:")
+print(df.head(3))

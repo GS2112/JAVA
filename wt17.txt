@@ -1,0 +1,79 @@
+Q.1) Write a PHP script to sort the following associative array : 
+array(“Sagar"=>"31","Vicky"=>"41","Leena"=>"39","Ramesh"=>"40") in 
+a) ascending order sort by Value 
+b) ascending order sort by Key 
+c) descending order sorting by Value 
+d) descending order sorting by Key 
+<?php 
+$name = array("Sagar"=>"31","Vicky"=>"41","Leena"=>"39","Ramesh"=>"40"); 
+echo"ascending by values<br>"; 
+asort($name); 
+print_r($name); 
+echo"ascending by keys<br>"; 
+ksort($name); 
+print_r($name); 
+echo"descending by values<br>"; 
+arsort($name); 
+print_r($name); 
+echo"descending by key<br>"; 
+krsort($name); 
+print_r($name) 
+?>
+
+
+Q2) A) # Write a Python program to draw scatter plots to compare two features of the␣
+ ↪iris dataset
+ import pandas as pd
+ import matplotlib.pyplot as plt
+ import seaborn as sns
+ # Load the iris dataset
+ iris = pd.read_csv("Iris.csv")
+ # Display the first few rows of the dataset
+ print(iris.head())
+ # Set up the matplotlib figure
+ plt.figure(figsize=(15, 10))
+ # Create scatter plot for Petal Length vs Petal Width
+ plt.subplot(2, 2, 1)
+ sns.scatterplot(data=iris, x='PetalLength', y='PetalWidth', hue='Species',␣
+ ↪palette='viridis', alpha=0.7)
+ plt.title("Petal Length vs Petal Width")
+ plt.xlabel("Petal Length (cm)")
+ plt.ylabel("Petal Width (cm)")
+ # Create scatter plot for Sepal Length vs Sepal Width
+ plt.subplot(2, 2, 2)
+ sns.scatterplot(data=iris, x='SepalLength', y='SepalWidth', hue='Species',␣
+ ↪palette='viridis', alpha=0.7)
+ plt.title("Sepal Length vs Sepal Width")
+ plt.xlabel("Sepal Length (cm)")
+ plt.ylabel("Sepal Width (cm)")
+ # Create scatter plot for Sepal Length vs Petal Length
+ plt.subplot(2, 2, 3)
+ sns.scatterplot(data=iris, x='SepalLength', y='PetalLength', hue='Species',␣
+ ↪palette='viridis', alpha=0.7)
+ plt.title("Sepal Length vs Petal Length")
+ plt.xlabel("Sepal Length (cm)")
+ 1
+plt.ylabel("Petal Length (cm)")
+ # Adjust layout
+ plt.tight_layout()
+ # Show the plot
+ plt.show()
+
+
+
+Q2) B)# Write a Python program to create a data frame containing columns name, age ,␣
+ ↪salary,
+ # department . Add 10 rows to the data frame. View the data frame
+ import pandas as pd
+ data = {
+ 2
+'name': ['Alice', 'Bob', 'Charlie', 'David', 'Eva', 'Frank', 'Grace',␣
+ ↪'Hannah', 'Ian', 'Judy'],
+ 'age': [25, 30, 22, 28, 26, 35, 29, 31, 24, 27],
+ 'salary': [50000, 60000, 45000, 70000, 52000, 65000, 58000, 62000, 48000,␣
+ ↪55000],
+ 'department': ['HR', 'IT', 'Finance', 'IT', 'HR', 'Sales', 'Marketing',␣
+ ↪'Finance', 'Sales', 'Marketing']
+ }
+ df = pd.DataFrame(data)
+ print(df)

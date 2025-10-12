@@ -1,0 +1,33 @@
+Q.1) Write a program using html with following CSS specifications- 
+i).The background colour of the company name should be in green. 
+ii).The text colour of the company name should be red. 
+iii).The heading should be large –with font 'comic sans ms' 
+iv).The description of the company should be displayed in blue color in a paragraph. 
+
+
+<!doctype html> 
+<html> 
+<head> 
+<title>learning css</title> 
+<style> 
+h1{background-color:green;color:red;font-family:"comic sans ms";} 
+p{color:blue;} 
+</style> 
+</head> 
+<body> 
+<h1>company name=orana</h1> 
+<p> fruit juice</p> 
+</body> 
+</html> 
+
+
+
+Q.2 A)Write a Python program to create box plots to see how each feature i.e. Sepal Length, 
+Sepal Width, Petal Length, Petal Width are distributed across the three species. 
+[10] 
+Ans  
+import pandas as pd  
+import matplotlib.pyplot as plt  
+iris = pd.read_csv("iris.csv")  
+new_data = iris[["SepalLengthCm", "SepalWidthCm", "PetalLengthCm", "PetalWidthCm"]]  
+new_data.boxplot() 

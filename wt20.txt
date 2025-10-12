@@ -1,0 +1,82 @@
+Q.1) Write a menu driven program to perform the following operations on associative arrays: 
+a) Split an array into chunks 
+b) Sort the array by values without changing the keys. 
+c) Filter the even elements from an array. 
+<!DOCTYPE html> 
+<html> 
+<body> 
+<form method="post" action="slip20.php"> 
+enter your choice: 
+<input type="radio" name="choice" value="a">split an array into chunks<br> 
+<input type="radio" name="choice" value="b">sort the array by values without chainging the 
+keys<br> 
+<input type="radio" name="choice" value="c">filter the even elements from an array<br> 
+<input type="submit" value="submit"></form> 
+</body> 
+</html> ----------------------slip20.php 
+<?php 
+$choice=$_POST["choice"]; 
+$name=array("sagar"=>"31","vicky"=>"41","Lenna"=>"39","Ramesh"=>"40"); 
+switch($choice) 
+{ 
+case 'a': 
+$ans=array_chunk($name,2); 
+echo"arrays chunk are<br>"; 
+print_r($ans); 
+break; 
+case 'b': 
+echo"<br> sorting array by values without changing keys<br>"; 
+asort($name); 
+print_r($name); 
+break; 
+case 'c': 
+echo"<br> filter even elements from array<br>"; 
+function iseven($value) 
+{ 
+if($value%2==0) 
+{ 
+echo "$value<br>"; 
+} 
+} 
+$ans=array_filter($name,'iseven'); 
+break; 
+} 
+?> 
+
+
+
+
+
+Q.2 A) Generate a random array of 50 integers and display them using a line chart, scatter  
+plot, histogram and box plot. Apply appropriate color, labels and styling options.  
+import numpy as np 
+import matplotlib.pyplot as plt 
+# Generate a random array of 50 integers 
+random_data = np.random.randint(1, 100, size=50) 
+print(random_data) 
+# Line chart 
+plt.plot(random_data, color='blue') 
+plt.title('Line Chart') 
+plt.show() 
+plt.scatter(range(50), random_data, color='green') 
+plt.title('Scatter Plot') 
+plt.show() 
+plt.hist(random_data, bins=10, color='orange', edgecolor='black') 
+plt.title('Histogram') 
+plt.show() 
+plt.boxplot(random_data, vert=False, patch_artist=True, boxprops=dict(facecolor='red')) 
+plt.title('Box Plot') 
+plt.show() 
+# Adjust layout 
+#plt.tight_layout() 
+# Show the plots 
+#plt.show()
+
+
+
+Q2) B) Add two outliers to the above data and display the box plot.
+ outliers = np.append(y, [10,-10]) # Adding two outliers
+ # Display the box plot with outliers
+ plt.boxplot(outliers, vert=False)
+ plt.title("Box Plot with Outliers")
+ plt.show()

@@ -1,0 +1,58 @@
+Q.1) Create HTML5 page with following specifications 
+i) Title should be about your City. 
+ii) Color the background by Pink color. 
+iii) Place your city name at the top of page in large text and in blue color. 
+iv) Add names of the landmarks in your city, each in different color, style and font 
+v) Add any image at the bottom. (Use inline CSS to format the web page) 
+
+<!doctype html> 
+<html> 
+<head> 
+<title>my city</title> 
+</head> 
+<body style=background-color:pink> 
+<h1 style=color:blue;text-align:center;font-size:80px;> pune</h1> 
+<ul type=square> 
+<li style= color:red;font-family:"arial";>nashik</li> 
+<li style=color:green;font-family:"cursive";>ozar</li> 
+</ul> 
+<img src="nashik.jpg" alt="not loading"> 
+</body> 
+</html> 
+
+
+
+
+
+
+
+
+
+Q.2 A) Write a Python program for Handling Missing Value. Replace missing value of salary, 
+age column with mean of that column.(Use Data.csv file). 
+[5] 
+# replacing missing values in salary  
+# column with mean of that column   
+data['salary'] = data['salary'].fillna(data['salary'].mean())   
+# replacing missing values in price column   
+# with median of that column   
+data['price'] = data['price'].fillna(data['price'].median())   
+# replacing missing values in bought column with   
+# standard deviation of that column   
+data['bought'] = data['bought'].fillna(data['bought'].std())   
+# replacing missing values in forenoon  column with   
+# minimum number of that column   
+data['forenoon'] = data['forenoon'].fillna(data['forenoon'].min())   
+# replacing missing values in afternoon  column with    
+# maximum number of that column   
+data['afternoon'] = data['afternoon'].fillna(data['afternoon'].max())   
+print(Data) 
+
+Q.2 B) Write a Python program to generate a line plot of name Vs salary 
+import pandas as pd 
+import matplotlib.pyplot as plt 
+df=pd.DataFrame(columns=['name','salary','percent']) 
+df.loc[0]=['abc',20,50.6] 
+df.loc[1]=['xyz',21,60] 
+df.plot(x="name",y="salary") 
+plt.show() 

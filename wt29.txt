@@ -1,0 +1,111 @@
+ Q.1) Consider the following entities and their relationships 
+Event (eno , title , date ) 
+Committee ( cno , name, head , from_time ,to_time , Status) 
+Event and Committee have many to many relationships. 
+Write a php script to accept title of event and modify status committee as working.
+
+//event table 
+
+create table event1(eno int primary key, title varchar(20), edate date); 
+
+insert into event1 values(1,'birthday','10-june-2023'); 
+insert into event1 values(2,'marrige','15-july-2023'); 
+insert into event1 values(3,'anniversary','13-june-2023'); 
+insert into event1 values(4,'birthday','10-september-2023');
+
+php21200=> select * from event1; 
+eno |    title    |   edate    -----+-------------+------------ 
+1 | birthday    | 2023-06-10 
+2 | marrige     
+| 2023-07-15 
+3 | anniversary | 2023-06-13 
+4 | birthday    | 2023-09-10 
+(4 rows) 
+
+//committee table 
+create table committee1(cno int primary key, name varchar(20),head varchar(15),fromtime 
+time,totime time,status varchar(10));
+
+insert into committee1 values(1,'decoration','Mr.Kadam','02:30:00','05:30:00','Working'); 
+insert into committee1 values(2,'food','Mr. jadhav ','06:30:00','09:30:00','Done'); 
+insert into committee1 values(3,'cleaning','Mr. unde','09:30:00','10:30:00','Incomplete); 
+
+php21200=> select * from committee1; 
+cno |    name    |    head     | fromtime |  totime  |   status   -----+------------+-------------+----------+----------+------------ 
+1 | decoration | Mr. Kadam   | 02:30:00 | 05:30:00 | Working 
+2 | food       
+| Mr. jadhav  | 06:30:00 | 09:30:00 | Done 
+3 | cleaning   | Mr. unde    | 09:30:00 | 10:30:00 | Incomplete 
+(3 rows) 
+
+//evecom table 
+create table evecom1(eno int references event1(eno) on delete cascade on update set null, cno 
+int references committee1(cno) on delete cascade on update set null); 
+
+insert into evecom1 values (1,1); 
+insert into evecom1 values (2,2); 
+insert into evecom1 values (3,3); 
+insert into evecom1 values (4,1); 
+insert into evecom1 values (1,2); 
+php21200=> select * from evecom1; 
+eno | cno -----+----- 
+1 |   1 
+2 |   2 
+4 |   1 
+1 |   2 
+(4 rows) 
+
+// update command 
+//HTML Script 
+update committee1 set status='notworking' where cno=(select cno from evecom1 where 
+eno=(select eno from event1 where title='marrige')); 
+
+<html>    
+<head>   
+<title> Update script </title>   
+</head> 
+<body> 
+<form action="dbass1.php" method="POST"> 
+Enter Title of Event:-  <input type=text name=title>  <br> 
+<input type=submit value="Update"> 
+<input type=reset value="Reset"> 
+</form> 
+</body> 
+</html>
+
+//dbass1.php 
+
+<?php 
+$db=pg_connect("host=172.16.6.1 dbname=php21200 user=php21200 password=''"); 
+$title=$_POST['title']; 
+if($db) 
+else 
+echo "connect <br>"; 
+echo "error"; 
+$q="update committee1 set status='working' where cno=(select cno from evecom1 where 
+eno=(select eno from event1 where title='$title'));"; 
+$r=pg_exec($db,$q); 
+if($r) 
+else 
+?> 
+echo "Record is updated sucessfuly!"; 
+echo "Error
+
+
+
+
+Q2) # Write a Python program to perform the following tasks :
+ # a. Apply OneHot coding on Country column.
+ # b. Apply Label encoding on purchased column
+ # (Data.csv have two categorical column the country column, and the purchased␣
+ ↪column).
+
+ import pandas as pd
+ from sklearn.preprocessing import LabelEncoder
+ d = pd.read_csv('s7.csv')
+ # Apply Label encoding on the 'Purchased' column
+ le = LabelEncoder()
+ d['Purchased'] = le.fit_transform(d['Purchased'])
+ # Apply OneHot encoding on the 'Country' column
+ ohed = pd.get_dummies(d, columns=['Country'])
+ print(ohed)

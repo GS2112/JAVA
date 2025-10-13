@@ -1,0 +1,73 @@
+1) Write a PHP program to read two file names from user and append content of first file into 
+second file. 
+// HTML Program  
+<html>  
+<head>  
+<title> Append content of first file into second file </title>  
+</head>  
+<form action=file1.php method=post>  
+Enter First File Name:- <input type="text" name=ffile> <br> <br>  
+Enter second File Name:- <input type="text" name=sfile> <br> <br> 
+<input type="submit" name="Submit" value="Append"> 
+<input type="reset" name="Reset">  
+</form>  
+</body>  
+</html> 
+// PHP Program  
+<?php  
+$sfile=$_POST['ffile'];  
+$dfile=$_POST['sfile'];  
+$fp1=fopen($sfile,"r");  
+$fp2=fopen($dfile,"a");  
+ 
+$d=fread($fp1,filesize($sfile)); 
+fwrite($fp2,$d);  
+fclose($fp1);  
+fclose($fp2);  
+?>
+
+
+
+
+
+Q2) A) # Import dataset “iris.csv”. Write a Python program to create a Bar plot to␣
+ ↪get the frequency
+ # of the three species of the Iris data.
+ import pandas as pd
+ import matplotlib.pyplot as plt
+ # Import the dataset
+ df = pd.read_csv('Iris.csv')
+ # Count the frequency of each species
+ species_counts = df['Species'].value_counts()
+ # Create a bar plot
+ plt.bar(species_counts.index, species_counts.values)
+ plt.title('Frequency of Iris Species')
+ plt.xlabel('Species')
+ plt.ylabel('Frequency')
+ plt.xticks(rotation=45)
+ plt.show()
+
+
+
+
+
+
+Q2) B) # Write a Python program to create a histogram of the three species of the Iris␣
+ ↪data
+ import pandas as pd
+ import matplotlib.pyplot as plt
+ d = pd.read_csv("Iris.csv")
+ plt.figure(figsize=(10, 6))
+ d[d.Species == 'setosa'].plot.hist(x='PetalLength', y='PetalWidth', alpha=0.7,␣
+ ↪color='orange', label='setosa', bins=10, ax=plt.gca())
+ d[d.Species == 'versicolor'].plot.hist(x='PetalLength', y='PetalWidth', alpha=0.
+ ↪7, color='blue', label='versicolor', bins=10, ax=plt.gca())
+ d[d.Species == 'virginica'].plot.hist(x='PetalLength', y='PetalWidth', alpha=0.
+ ↪7, color='green', label='virginica', bins=10, ax=plt.gca())
+ # Set labels and title
+ 2
+plt.xlabel("Petal Length (cm)")
+ plt.ylabel("Frequency")
+ plt.title("Histogram of Petal Length by Species")
+ plt.legend()
+ plt.show()

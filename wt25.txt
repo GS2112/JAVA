@@ -1,0 +1,46 @@
+Q1) Write a menu driven program to perform various file operations. Accept filename from 
+user. 
+a) Display type of file. 
+b) Display last modification time of file 
+c) Display the size of file 
+d) Delete the file 
+//HTML Program  
+<html>  
+<head>  
+<title> Menu driven program to perform various file operations </title>  
+</head>  
+<form action=file2.php method=post> 
+Enter File Name:- <input type="text" name=file> <br> <br>  
+<input type="radio" name="op" value="a"> Display type of file. <br> <br> 
+<input type="radio" name="op" value="b"> Display last modification time of file <br> <br> 
+<input type="radio" name="op" value="c"> Display the size of file <br> <br>  
+<input type="radio" name="op" value="d"> Delete the file <br> <br>  
+<input type="submit" name="Submit" value="File Oprations">  
+<input type="reset" name="Reset">  
+</form>  
+</body>  
+</htm
+
+
+Q.2) Write a Python program           
+A) To create a dataframe containing columns name, age and percentage. Add 10 rows to the  
+dataframe. View the dataframe. 
+import pandas as pd 
+df=pd.DataFrame(columns=['name','age','percent']) 
+df.loc[0]=['abc',20,50.6] 
+df.loc[1]=['xyz',21,60] 
+print(df) 
+
+
+
+2) To print the shape, number of rows-columns, data types, feature names and the description of  
+the data. 
+import pandas as pd 
+df=pd.DataFrame(columns=['name','age','percent']) 
+df.loc[0]=['abc',20,50.6] 
+df.loc[1]=['xyz',21,60] 
+print(df) 
+print(df.shape) 
+print(df.describe()) 
+print(df.info()) 
+print(df.dtypes)

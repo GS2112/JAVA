@@ -1,0 +1,44 @@
+ Write a PHP program to read two file names from user and copy the content of first file 
+into second file. 
+// HTML Program 
+<html>  
+<head>  
+<title> copy content of first file into second file </title>  
+</head>  
+<form action=file3.php method=post>  
+Enter First File Name:- <input type="text" name=ffile> <br> <br>  
+Enter second File Name:- <input type="text" name=sfile> <br> <br> 
+<input type="submit" name="Submit" value="Copy">  
+<input type="reset" name="Reset">  
+</form> 
+</body> 
+</html> 
+// PHP program  
+<?php  
+$sfile=$_POST['ffile'];  
+$dfile=$_POST['sfile'];  
+$fp1=fopen($sfile,"r");  
+$fp2=fopen($dfile,"w");
+// Method 1 $d=fread($fp1,filesize($sfile)); 
+fwrite($fp2,$d);    
+fclose($fp1);  
+fclose($fp2);  
+?>
+
+
+
+
+Q2) # Write a Python program to perform the following tasks :
+ # a. Apply OneHot coding on Country column.
+ # b. Apply Label encoding on purchased column
+ # (Data.csv have two categorical column the country column, and the purchased␣
+ ↪column).
+ import pandas as pd
+ from sklearn.preprocessing import LabelEncoder
+ d = pd.read_csv('s7.csv')
+ # Apply Label encoding on the 'Purchased' column
+ le = LabelEncoder()
+ d['Purchased'] = le.fit_transform(d['Purchased'])
+ # Apply OneHot encoding on the 'Country' column
+ ohed = pd.get_dummies(d, columns=['Country'])
+ print(ohed)

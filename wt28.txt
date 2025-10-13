@@ -1,0 +1,115 @@
+ Q1)Write a program to read a flat file “student.dat”, calculate the percentage and display the 
+data from file in tabular format. (Student.dat file contains rollno, name, OS, WT, DS, Python, 
+Java, CN ) 
+student.dat  
+1 gautam 45 42 44 43 40 38  
+2 gajanan 42 42 48 43 45 37  
+3 amol 45 42 43 46 41 31  
+4 gauri 43 44 41 43 47 35  
+5 kiran 41 42 42 45 43 36  
+
+<?php  
+$fp=fopen("student.dat","r");  
+echo "<table border=2 color=red>";  
+echo  "<tr>  
+</tr>";  
+<th> Roll No </th>  
+<th> Name </th>  
+<th> OS </th>  
+<th> WT </th>  
+<th> DS </th>  
+<th> Python </th>  
+<th> JAVA </th>  
+<th> CN </th>  
+<th> Total </th>  
+<th> Percentage</th>  
+while(($r=fscanf($fp,"%d %s %d %d %d %d %d %d"))!=NULL)  
+{  
+$total= $r[2]+$r[3]+$r[4]+$r[5]+$r[6]+$r[7];  
+$per=round(($tot/6.0),2);  
+echo "<tr>  
+<td> $r[0] </td>  
+<td> $r[1] </td>  
+<td> $r[2] </td>  
+<td> $r[3] </td>  
+<td> $r[4] </td>  
+<td> $r[5] </td>  
+<td> $r[6] </td>  
+<td> $r[7] </td>  
+<td> $total </td>  
+<td> $per </td>  
+</tr>";  
+}  
+echo "</table>";  
+fclose($fp);  
+?> 
+
+
+
+
+
+
+
+
+Q2) A) # Write a Python program To create a dataframe containing columns name, age and
+ # percentage. Add 10 rows to the dataframe. View the dataframe.
+ import pandas as pd
+ data = {
+ 'name': ['Alice', 'Bob', 'Charlie', 'David', 'Eva', 'Frank', 'Grace',␣
+ ↪'Hannah', 'Ian', 'Judy'],
+ 'age': [20, 22, 21, 23, 24, 25, 22, 26, 27, 19],
+ 'percentage': [85.5, 90.2, 78.0, 88.5, 92.0, 80.0, 84.5, 75.5, 89.0, 91.0]
+ }
+ df = pd.DataFrame(data)
+ print(df)
+
+
+
+
+Q2 B) # Write a Python program to print the shape, number of rows-columns, data␣
+ ↪types, feature
+ # names and the description of the data(Use User_Data.csv)
+ # (this program also in slip19 of 2 )
+ import pandas as pd
+ df = pd.read_csv('Data_filled.csv')
+ print("Shape of the dataset:", df.shape)
+ print("features :",df.info())
+ print("\nDescription of the Data:\n", df.describe())
+ print("\nData Types:\n", df.dtypes)
+
+
+
+Q2) C) # Write a Python program to view basic statistical details of the data (Use␣
+ ↪advertising.csv)
+ # (similer as slip1 of 2)
+ import pandas as pd
+ df = pd.read_csv('s7.csv')
+ basic_stats = df.describe()
+ print("Basic Statistical Details:")
+ print(basic_stats)
+
+
+Q2 D) import pandas as pd
+ import numpy as np
+ 1
+# Initial data
+ data = {
+ 'name': ['Alice', 'Bob', 'Charlie', 'David', 'Eva', 'Frank', 'Grace',␣
+ ↪'Hannah', 'Ian', 'Judy'],
+ 'age': [20, 22, 21, 23, 24, 25, 22, 26, 27, 19],
+ 'percentage': [85.5, 90.2, 78.0, 88.5, 92.0, 80.0, 84.5, 75.5, 89.0, 91.0]
+ }
+ # Create DataFrame
+ df = pd.DataFrame(data)
+ # Add duplicate rows
+ duplicates = pd.DataFrame({
+ 'name': ['Alice', 'Bob', 'Charlie', 'Charlie', 'Eva'],
+ 'age': [20, 22, 21, np.nan, 24],
+ 'percentage': [85.5, 90.2, 78.0, 88.5, 92.0]
+ })
+ # Concatenate the original DataFrame and the duplicates
+ df = pd.concat([df, duplicates], ignore_index=True)
+ # Add a new column 'remarks' with empty values
+ df['remarks'] = ''
+ # Display the DataFrame
+ print(df)

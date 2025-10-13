@@ -1,0 +1,153 @@
+ Consider the following entities and their relationships 
+Student (Stud_id,name,class) 
+Competition (c_no,c_name,type) 
+Relationship between student and competition is many-many with attribute rank and year. 
+Create a RDB in 3NF for the above and solve the following. Using above database write a 
+script in PHP to accept a competition name from user and display information of student who 
+has secured 1st rank in that competition.
+
+// student table 
+create table student(sid int primary key,name varchar(20),class varchar(10));
+
+insert into student values(1,'kishor','fybcs'); 
+insert into student values(2,'amol','sybcs'); 
+insert into student values(3,'suhas','tybcs'); 
+insert into student values(4,'rani','fybcs'); 
+insert into student values(5,'gauri','sybcs'); 
+
+php21200=> select * from student;
+
+sid |  name  | class -----+--------+------- 
+1 | kishor | fybcs 
+2 | amol   | sybcs 
+3 | suhas  | tybcs 
+4 | rani   | fybcs 
+5 | gauri  | sybcs 
+(5 rows) 
+
+// competition table 
+create table competition(cno int primary key, cname varchar(20),type varchar(15)); 
+
+insert into competition values(1,'quiz','individual'); 
+insert into competition values(2,'khokho','group'); 
+insert into competition values(3,'running','individual'); 
+insert into competition values(4,'basketball','group'); 
+insert into competition values(5,'football','group'); 
+
+php21200=> select * from competition; 
+
+cno |   cname    |    type    -----+------------+------------ 
+1 | quiz       
+| individual 
+2 | khokho     
+| group 
+3 | running    | individual 
+4 | basketball | group 
+5 | football   | group 
+(5 rows) 
+
+//studcomp table 
+create table studcomp(sid int references student(sid) on delete cascade on update set null, cno 
+int references competition(cno) on delete cascade on update set null,rank int, year int); 
+
+insert into studcomp values(1,4,1,2021); 
+insert into studcomp values(2,3,2,2022); 
+insert into studcomp values(3,2,3,2023); 
+insert into studcomp values(4,1,2,2023); 
+insert into studcomp values(5,5,1,2023); 
+
+php21200=> select * from studcomp;
+
+sid | cno | rank | year -----+-----+------+------ 
+1 |   4 |    1 | 2021 
+2 |   3 |    2 | 2022 
+3 |   2 |    3 | 2023 
+4 |   1 |    2 | 2023 
+5 |   5 |    1 | 2023 
+(5 rows) 
+
+//query 
+Accept a competition name from user and display information of student who has secured 1st 
+rank in that competition. 
+
+select student.sid,name,class from student,competition,studcomp 
+where student.sid=studcomp.sid and competition.cno=studcomp.cno 
+and rank=1 and cname='football'; 
+
+sid | name  | class -----+-------+------- 
+5 | gauri | sybcs 
+(1 row) 
+
+//dbass2.html 
+<html>   <head>   <title> Student secured 1st rank </title>  </head> 
+<body> 
+<form action="dbass2.php" method="POST"> 
+Enter Competition Name:- 
+<input type=text name=cname>    <br> 
+<input type=submit value="submit"> 
+<input type=reset value="Reset"> 
+</form> 
+</body> 
+</html> 
+
+//dbass2.php 
+
+<?php 
+$db=pg_connect("host=172.16.6.1 dbname=php21200 user=php21200 password=''"); 
+$cname=$_POST['cname']; 
+if($db) 
+else 
+echo "connect <br>"; 
+echo "error"; 
+$r=pg_exec($db,$q); 
+$q="select student.sid,name,class from student,competition,studcomp 
+where student.sid=studcomp.sid and competition.cno=studcomp.cno 
+and rank=1 and cname='$cname'"; 
+echo "<h1 align=center> Student who has secured 1st rank  </h1>"; 
+echo "<table border=2 bgcolor=red align=center>"; 
+echo "<tr> <th> sno </th> <th> sname </th> <th> class </th></tr>"; 
+while ($row=pg_fetch_array($r)) 
+{ 
+echo "<tr>"; 
+echo "<td>  $row[0]  </td>"; 
+echo "<td>  $row[1] </td>"; 
+echo "<td>  $row[2] </td>"; 
+echo "</tr>"; 
+} 
+echo "</table>"; 
+pg_close($db); 
+?>
+
+
+
+
+Q2) A) # Generate a random array of 50 integers and display them using a line chart,␣
+ ↪scatter plot.
+ # Apply appropriate color, labels and styling options
+ # slip 9 and slip 15 are same
+ import matplotlib.pyplot as plt
+ import numpy as np
+ from matplotlib import colors
+ from matplotlib.ticker import PercentFormatter
+ no_of_balls = 50
+ x = np.random.randn(50)
+ y= np.random.randn(50)
+ colors = [np.random.randint(1,4) for i in range(no_of_balls)]
+ plt.plot(x,y)
+ plt.show()
+ plt.scatter(x,y,c=colors)
+ plt.show()
+
+
+
+
+Q2) B) # Create two lists, one representing subject names and the other representing␣
+ ↪marks
+ # obtained in those subjects. Display the data in a pie chart
+ import matplotlib.pyplot as plt
+ import numpy as np
+ subjects = ['Math', 'Science', 'English', 'History', 'Geography']
+ marks = [85, 90, 75, 80, 95]
+ fig = plt.figure(figsize=(5, 5))
+ plt.pie(marks,labels=subjects)
+ plt.show()

@@ -1,0 +1,130 @@
+Q1) 
+
+//Doctor table 
+create table doctor1(docno int primary key,dname varchar(20),address varchar(10),city 
+varchar(10),area varchar(10),hospno int references hospital(hospno) on delete cascade on 
+update set null ); 
+
+insert into doctor1 values(1,'dhane','station rd','baramati','rural',1); 
+insert into doctor1 values(2,'kudale','cinema rd','pune','urban',2); 
+insert into doctor1 values(3,'joshi','main rd','baramati','rural',3); 
+insert into doctor1 values(4,'wable','cinema rd','pune','urban',4); 
+insert into doctor1 values(5,'rode','station rd','baramati','rural',5); 
+
+php21200=> select * from doctor1; 
+
+docno | dname  |  address   |   city   | area  | hospno -------+--------+------------+----------+-------+-------- 
+1 | dhane  | station rd | baramati | rural |      
+2 | kudale | cinema rd  | pune     | urban |      
+3 | joshi  | main rd    | baramati | rural |      
+4 | wable  | cinema rd  | pune     | urban |      
+5 | rode   | station rd | baramati | rural |      
+(5 rows) 
+//Hospital table 
+1 
+2 
+3 
+5 
+4 
+create table hospital1(hospno int primary key,hname varchar(20),hcity varchar(10)); 
+
+insert into hospital1 values(1,'life line','baramati'); 
+insert into hospital1 values(2,'star','pune'); 
+insert into hospital1 values(3,'city care','baramati'); 
+insert into hospital1 values(4,'life care','pune'); 
+insert into hospital1 values(5,'shree','baramati'); 
+php21200=> select * from hospital1; 
+
+hospno |   hname   |  hcity   --------+-----------+---------- 
+1 | life line | baramati 
+2 | star      
+| pune 
+3 | city care | baramati 
+4 | life care | pune 
+5 | shree     
+| baramati 
+(5 rows) 
+
+//query 
+print the Doctor visiting to the Hospital in tabular format. Accept Hospital name from user. 
+
+select doctor1.docno,dname 
+from doctor1,hospital1 
+where hospital1.hospno=doctor1.hospno 
+and hname='life line'; 
+
+//HTML Program 
+<html> 
+<head> 
+<title> Doctor visiting to the Hospital </title> 
+</head> 
+<body> 
+<form action="dbass3.php" method="POST"> 
+Enter Hospital Name:-  <input type=text name=hname> <br> 
+<input type=submit value="Hospital Name"> 
+<input type=reset value="Reset"> 
+</form> 
+</body> 
+</html> 
+
+//PHP Program 
+<?php 
+$db=pg_connect("host=172.16.6.1 dbname=php21200 user=php21200 password=''"); 
+$hname=$_POST['hname']; 
+if($db) 
+echo "connect <br>"; 
+else 
+echo "error"; 
+$q="select doctor1.docno,dname 
+from doctor1,hospital1 
+where hospital1.hospno=doctor1.hospno 
+and hname='$hname';"; 
+$r=pg_exec($db,$q); 
+echo "<h1 align=center> Doctor visiting to the Hospital  </h1>"; 
+echo "<table border=2 bgcolor=red align=center>"; 
+while ($row=pg_fetch_array($r)) 
+{ 
+echo "<tr>"; 
+echo "<tr> <th> Doctor No </th> <th> Doc Name </th> <th> City </th></tr>"; 
+echo "<td>  $row[0]  </td>"; 
+echo "<td>  $row[1] </td>"; 
+echo "<td>  $row[2] </td>"; 
+echo "</tr>"; 
+} 
+echo "</table>"; 
+pg_close($db); 
+?>
+
+
+
+
+
+
+
+ Q2) A)# Generate a random array of 50 integers and display them using a line chart,␣
+ ↪scatter plot.
+ # Apply appropriate color, labels and styling options
+ # slip 9 and slip 15 are same
+ import matplotlib.pyplot as plt
+ import numpy as np
+ from matplotlib import colors
+ from matplotlib.ticker import PercentFormatter
+ no_of_balls = 50
+ x = np.random.randn(50)
+ y= np.random.randn(50)
+ colors = [np.random.randint(1,4) for i in range(no_of_balls)]
+ plt.plot(x,y)
+ plt.show()
+ plt.scatter(x,y,c=colors)
+ plt.show()
+
+Q2) B) # Create two lists, one representing subject names and the other representing␣
+ ↪marks
+ # obtained in those subjects. Display the data in a pie chart
+ import matplotlib.pyplot as plt
+ import numpy as np
+ subjects = ['Math', 'Science', 'English', 'History', 'Geography']
+ marks = [85, 90, 75, 80, 95]
+ fig = plt.figure(figsize=(5, 5))
+ plt.pie(marks,labels=subjects)
+ plt.show()

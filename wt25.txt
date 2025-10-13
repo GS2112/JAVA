@@ -22,25 +22,40 @@ Enter File Name:- <input type="text" name=file> <br> <br>
 </htm
 
 
-Q.2) Write a Python program           
-A) To create a dataframe containing columns name, age and percentage. Add 10 rows to the  
-dataframe. View the dataframe. 
-import pandas as pd 
-df=pd.DataFrame(columns=['name','age','percent']) 
-df.loc[0]=['abc',20,50.6] 
-df.loc[1]=['xyz',21,60] 
-print(df) 
 
 
 
-2) To print the shape, number of rows-columns, data types, feature names and the description of  
-the data. 
-import pandas as pd 
-df=pd.DataFrame(columns=['name','age','percent']) 
-df.loc[0]=['abc',20,50.6] 
-df.loc[1]=['xyz',21,60] 
-print(df) 
-print(df.shape) 
-print(df.describe()) 
-print(df.info()) 
-print(df.dtypes)
+Q.2 A) Generate a random array of 50 integers and display them using a line chart, scatter  
+plot, histogram and box plot. Apply appropriate color, labels and styling options.  
+import numpy as np 
+import matplotlib.pyplot as plt 
+# Generate a random array of 50 integers 
+random_data = np.random.randint(1, 100, size=50) 
+print(random_data) 
+# Line chart 
+plt.plot(random_data, color='blue') 
+plt.title('Line Chart') 
+plt.show() 
+plt.scatter(range(50), random_data, color='green') 
+plt.title('Scatter Plot') 
+plt.show() 
+plt.hist(random_data, bins=10, color='orange', edgecolor='black') 
+plt.title('Histogram') 
+plt.show() 
+plt.boxplot(random_data, vert=False, patch_artist=True, boxprops=dict(facecolor='red')) 
+plt.title('Box Plot') 
+plt.show() 
+
+
+
+
+Q2) B) # Create two lists, one representing subject names and the other representing␣
+ ↪marks
+ # obtained in those subjects. Display the data in a pie chart
+ import matplotlib.pyplot as plt
+ import numpy as np
+ subjects = ['Math', 'Science', 'English', 'History', 'Geography']
+ marks = [85, 90, 75, 80, 95]
+ fig = plt.figure(figsize=(5, 5))
+ plt.pie(marks,labels=subjects)
+ plt.show()

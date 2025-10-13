@@ -1,0 +1,61 @@
+Q1) Create an array of 15 high temperatures, approximating the weather for a spring month, 
+then find the average high temp, the five warmest high temps Display the result on the 
+browser. 
+//PHP Program  
+<?php 
+$temp=array(35,45,50,44,42,36,38,30,40,47,60,48,24,38,36); 
+rsort($temp); 
+echo "Average high temp is:- <br> <br>"; 
+$total=array_sum($temp); 
+$avgtemp=round(($total/15),2); 
+echo "$avgtemp&deg;  <br> <br>"; 
+$t=array_slice($temp,0,5); 
+echo "<br> <br>Five warmest high temps :- <br> <br>"; 
+foreach($t as $v) 
+echo "$v&deg <br>"; 
+?>
+
+
+
+
+
+Q2) A)# Import dataset “iris.csv”. Write a Python program to create a Bar plot to␣
+ ↪get the frequency
+ # of the three species of the Iris data.
+ import pandas as pd
+ import matplotlib.pyplot as plt
+ # Import the dataset
+ df = pd.read_csv('Iris.csv')
+ # Count the frequency of each species
+ species_counts = df['Species'].value_counts()
+ # Create a bar plot
+ plt.bar(species_counts.index, species_counts.values)
+ plt.title('Frequency of Iris Species')
+ plt.xlabel('Species')
+ plt.ylabel('Frequency')
+ plt.xticks(rotation=45)
+ plt.show()
+
+
+
+
+
+Q2) B) # Write a Python program to create a histogram of the three species of the Iris␣
+ ↪data
+ import pandas as pd
+ import matplotlib.pyplot as plt
+ d = pd.read_csv("Iris.csv")
+ plt.figure(figsize=(10, 6))
+ d[d.Species == 'setosa'].plot.hist(x='PetalLength', y='PetalWidth', alpha=0.7,␣
+ ↪color='orange', label='setosa', bins=10, ax=plt.gca())
+ d[d.Species == 'versicolor'].plot.hist(x='PetalLength', y='PetalWidth', alpha=0.
+ ↪7, color='blue', label='versicolor', bins=10, ax=plt.gca())
+ d[d.Species == 'virginica'].plot.hist(x='PetalLength', y='PetalWidth', alpha=0.
+ ↪7, color='green', label='virginica', bins=10, ax=plt.gca())
+ # Set labels and title
+ 2
+plt.xlabel("Petal Length (cm)")
+ plt.ylabel("Frequency")
+ plt.title("Histogram of Petal Length by Species")
+ plt.legend()
+ plt.show()
